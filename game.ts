@@ -10,7 +10,7 @@ const WORDS = ["cactus", "penguin", "toaster", "unicorn", "volcano", "garden gno
 interface State { players: { id: string; name: string }[]; round: number; word: string }
 
 export const game = {
-  players: 2, // the game starts as soon as this many players have joined
+  players: 4, // the game starts as soon as this many players have joined
 
   setup(players: State["players"]): State {
     return { players, round: 0, word: "" };
@@ -27,7 +27,7 @@ export const game = {
   async botInput(state: State): Promise<string> {
     const prompt = `Write ONE crazy, funny sentence (max. 20 words) containing the word "${state.word}". ` +
       "Reply with only the sentence.";
-    return await askMistral(prompt) ?? "The AI is speechless.";
+    return await askMistral(prompt) ?? "BG. Do better.";
   },
 
   // Everyone has submitted (inputs: player ID → text, the AI is "bot")
